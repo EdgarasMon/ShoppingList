@@ -9,7 +9,48 @@
 </head>        
 <body> 
     <div><h1>Shopping List</h1></div> 
+    <nav role="navigation">
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul id="menu">
+            <a href="#"><li>My Shopping Lists</li></a>
+            <a href="#"><li>Products</li></a>
+            <a href="#"><li>Expenses</li></a>
+            <a href="#"><li>Graphs</li></a>
+          </ul>
+        </div>
+      </nav>
 
+<div class="container">
+    <div>...</div>  
+    <div>  
+        <span class="textinput"><input type="text" name="name" value="Please enter Product description" required minlength="5" maxlength="50" size="100"></span>  
+        <span class="textinput"><input type="text" value="quantity" name="name" required minlength="1" maxlength="3" size="3"></span>         
+        <span class="button"><button name="button" type="button"> Add </button></span> 
+    </div>
+    <div> 
+            <span>Or choose from the list</span>
+            <span>
+                <form>  <!--formai neleidzia span uzdeti-->
+                  <label for="selector"> <!-- Can add label if want -->
+                    <select id="selector"> <!-- Use "select" to create object -->
+                      <option>Option 1</option> <!-- Add all applicable options -->
+                      <option>Option 2</option>
+                      <option>Option 3</option> <!-- add selected to change default from first option -->
+                      <optgroup label="Group"> <!-- To create nested options for categories use "optgroup" -->
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                    </select>
+                  </label>
+                </form>
+            </span>    
+        <span class="textinput"><input type="text" value="quantity" name="name" required minlength="1" maxlength="3" size="3"></span>         
+        <span class="button"><button name="button" type="button"> Add </button></span> 
+    </div>
+</div>
 
 <script src="javascript.js"></script>
 </body>
