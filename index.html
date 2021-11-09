@@ -11,33 +11,37 @@
       <span>
         <h1 class="title">Shopping List</h1>
       </span>  
-    <span>
-    <nav role="navigation">
-        <div id="menuToggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-          <ul id="menu">
-            <a href="My_Shopping.html"><li>My Shopping</li></a>
-            <a href="#"><li>Products</li></a>
-            <a href="#"><li>Expenses</li></a>
-            <a href="#"><li>Graphs</li></a>
-          </ul>
-        </div>
-    </nav>
-    </span>
+      <span>
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+              <a href="My_Shopping.html"><li>My Shopping</li></a>
+              <a href="#"><li>Products</li></a>
+              <a href="#"><li>Expenses</li></a>
+              <a href="#"><li>Graphs</li></a>
+            </ul>
+          </div>
+        </nav>
+      </span>
     </div>
-    <span>
+
 <div class="container">
-    <div>Enter product description</div>  
-    <div style="padding-bottom: 2rem">  
-        <span><input id="first" type="text" class="textinput" placeholder=". . ."name="name" maxlength="50" size="50"></span>  
-        <span><input id="second"type="text" class="textinput" placeholder="Qty." name="name" maxlength="3" size="3"></span>         
-        <span><button id="add" name="button"  class="button" type="button" onclick="">Add</button></span> 
-    </div>
-    <div> 
-            <span>Or choose from the list</span>
+  <div>
+    <fieldset id="fieldset1">
+      <legend>Enter product description</legend>  
+        <div>  
+          <span><input id="first" type="text" class="textinput" placeholder=". . ."name="name" maxlength="100" size="50"></span>  
+          <span><input id="second"type="text" class="textinput" placeholder="Qty." name="name" maxlength="3" size="3"></span>         
+          <span><button id="add" name="button"  class="button" type="button" onclick="">Add</button></span> 
+        </div> 
+  </div>       
+    </fieldset>     
+          <fieldset id="fieldset2">     
+            <legend>Or choose from the list</legend>
             <span>
                 <form>  <!--formai neleidzia span uzdeti-->
                   <label for="selector"> <!-- Can add label if want -->
@@ -51,15 +55,16 @@
                     </select>
                   </label>
                 </form>
-            </span>  
-        <span class="textinput"><input type="text" placeholder="Qty." name="name" required minlength="1" maxlength="3" size="3"></span>         
-        <span class="button"><button name="button" type="button">Add</button></span> 
-        
-    </div>
+            </span>              
+            <span class="textinput"><input type="text" placeholder="Qty." name="name" required minlength="1" maxlength="3" size="3"></span>         
+            <span class="button"><button name="button" type="button">Add</button></span> 
+        </fieldset> 
+  </div>  
 </div>
-<div id="container2">
-  <div><h2></h2>
 
+<div id="container2">
+  <div>
+    
   </div>
 </div>
 </span>

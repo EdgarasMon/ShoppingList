@@ -7,18 +7,10 @@
    font-family: "Avenir Next", "Avenir", sans-serif;
  }
 
- .container {
-  position: relative;
-  left: 20%;
-  font-size: 2rem;
-}
- 
  #menuToggle
  {
    display: grid;
    position: relative;
-   top: 50px;
-   left: 50px;
    z-index: 1;
    -webkit-user-select: none;
    user-select: none;
@@ -136,21 +128,41 @@
  }
 
 .title {
-  margin-left: 1%;
   position: relative;
 }
 
 .textinput[type=text]:focus {
-  border: 5px solid #555;
-  
+  border: 5px solid rgb(207, 182, 212);  
 }
 
-span.textinput {
-  font-size: 2rem;
+.container {  
+  position: relative;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-bottom: 5%;
 }
 
 #container2 {
-  padding-top: 5%;
+  position: relative;  
   font-size: 1.5rem;
   text-align: center;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+}
+
+#fieldset1, #fieldset2 {
+  display: flex;
+  font-size: 1rem;
+  position: relative;
+  justify-content: start;
+  justify-items: center;  
 }
