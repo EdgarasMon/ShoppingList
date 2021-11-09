@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Edgaras">
-    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
-    <title>ShoppingList</title>
+    <title></span>ShoppingList</title>
     <link rel="stylesheet" href="styles.css">
 </head>        
 <body> 
-    <div><h1>Shopping List</h1></div> 
+    <div>
+      <span>
+        <h1 class="title">Shopping List</h1>
+      </span>  
+    <span>
     <nav role="navigation">
         <div id="menuToggle">
           <input type="checkbox" />
@@ -16,20 +19,22 @@
           <span></span>
           <span></span>
           <ul id="menu">
-            <a href="#"><li>My Shopping Lists</li></a>
+            <a href="My_Shopping.html"><li>My Shopping</li></a>
             <a href="#"><li>Products</li></a>
             <a href="#"><li>Expenses</li></a>
             <a href="#"><li>Graphs</li></a>
           </ul>
         </div>
-      </nav>
-
+    </nav>
+    </span>
+    </div>
+    <span>
 <div class="container">
-    <div>...</div>  
-    <div>  
-        <span class="textinput"><input type="text" name="name" value="Please enter Product description" required minlength="5" maxlength="50" size="100"></span>  
-        <span class="textinput"><input type="text" value="quantity" name="name" required minlength="1" maxlength="3" size="3"></span>         
-        <span class="button"><button name="button" type="button"> Add </button></span> 
+    <div>Enter product description</div>  
+    <div style="padding-bottom: 2rem">  
+        <span><input id="first" type="text" class="textinput" placeholder=". . ."name="name" maxlength="50" size="50"></span>  
+        <span><input id="second"type="text" class="textinput" placeholder="Qty." name="name" maxlength="3" size="3"></span>         
+        <span><button id="add" name="button"  class="button" type="button" onclick="">Add</button></span> 
     </div>
     <div> 
             <span>Or choose from the list</span>
@@ -46,11 +51,18 @@
                     </select>
                   </label>
                 </form>
-            </span>    
-        <span class="textinput"><input type="text" value="quantity" name="name" required minlength="1" maxlength="3" size="3"></span>         
-        <span class="button"><button name="button" type="button"> Add </button></span> 
+            </span>  
+        <span class="textinput"><input type="text" placeholder="Qty." name="name" required minlength="1" maxlength="3" size="3"></span>         
+        <span class="button"><button name="button" type="button">Add</button></span> 
+        
     </div>
 </div>
+<div id="container2">
+  <div><h2></h2>
+
+  </div>
+</div>
+</span>
 
 <script src="javascript.js"></script>
 </body>
