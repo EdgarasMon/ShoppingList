@@ -5,6 +5,7 @@ document.getElementById('add').onclick = function changeContent(){
     container2.innerText += product;
     container2.innerText += " " + productQty + "X" + "\n";    
     console.log(localStorage);  
+    db.ShoppingList.insertOne( { item: product, quantity: productQty} );
 }
 
 
