@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Edgaras">
     <title>ShoppingList</title>
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="css/styles_index.css">    
 </head>        
 <body> 
     <div>
@@ -23,7 +23,7 @@
             <span></span>
             <ul id="menu">
               <a href="My_Shopping.html"><li>My Shopping</li></a>
-              <a href="#"><li>Products</li></a>
+              <a href="Products.html"><li>Products</li></a>
               <a href="#"><li>Expenses</li></a>
               <a href="#"><li>Graphs</li></a>
             </ul>
@@ -31,44 +31,71 @@
         </nav>
       </span>
     </div>
-
-<div class="container">
-    <form id="fieldset1" method="post"  action="/">
-      <legend>Enter product description</legend>  
-        <div>  
-          <span><input id="first" type="text" class="textinput" placeholder=". . ."name="first" maxlength="100" size="50"></span>  
-          <span><input id="second" type="text"" placeholder="Qty." name="second" maxlength="3" size="3"></span>         
-          <span><button>Add</button></span> 
-        </div>     
-    </form> 
-        
-    <fieldset id="fieldset2">     
-      <legend>Or choose from the list</legend>
-        <span>
-                <form>  <!--formai neleidzia span uzdeti-->
-                  <label for="selector"> <!-- Can add label if want -->
-                    <select id="selector"> <!-- Use "select" to create object -->
-                      <option>Option 1</option> <!-- Add all applicable options -->
-                      <option>Option 2</option>
-                      <option>Option 3</option> <!-- add selected to change default from first option -->
-                      <optgroup label="Group"> <!-- To create nested options for categories use "optgroup" -->
-                        <option>Option 4</option>
-                        <option>Option 5</option>
-                    </select>
-                  </label>
-                </form>
-            </span>              
-            <span class="textinput"><input type="text" placeholder="Qty." name="name" required minlength="1" maxlength="3" size="3"></span>         
-            <span class="button"><button name="button" type="button">Add</button></span> 
-        </fieldset> 
-  </div>  
-</div>
-
-<div id="container2">
-  <div>
+<div class="wrapper">
+  <div class="container">
+      <form id="fieldset1" method="post"  action="/">
+        <fieldset id="fieldset1">
+          <legend>Enter product description</legend>  
+          <div>  
+              <span><input id="first" type="text" class="textinput" placeholder=". . ."name="first" maxlength="100" size="50"></span>  
+              <span>  
+                <label for="Qty"></label>
+                <select id="Qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="10+">10+</option>
+                </select>
+              </span>         
+              <span><button id="add" name="button"  class="button" type="button" onclick="document.getElementById('first').value = ''">Add</button></span> 
+            </div>    
+        </fieldset>    
+      </form> 
     
+    <form>      
+      <fieldset id="fieldset2">     
+        <legend>Or search from database</legend>
+          <div>     
+            <span><input id="third" type="text" class="textinput" placeholder=". . ."name="third" maxlength="100" size="50"></span> 
+            <span>  
+              <label for="Qty"></label>
+              <select id="Qty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="10+">10+</option>
+              </select>
+            </span>         
+            <span class="button"><button name="button" type="button">Add</button></span> 
+          </div>  
+      </fieldset> 
+    </form> 
+    </div>  
+ 
+
+  <div class="container2" id="container2" style="display: none;">
+    <img class="paper" src="pic/paper4.jpg">
+    <div id="list" class="top-left"></div>
+    <div class="bottomButons">
+      <span id="save">Save</span>
+      <span id="clear">Clear</span>    
+    </div>  
   </div>
-</div>
-<script src="main.js"></script>
+</div>  
+<script src="javascript.js"></script>
 </body>
 </html>

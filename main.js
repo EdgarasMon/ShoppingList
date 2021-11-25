@@ -17,8 +17,6 @@ const Note = mongoose.model("Note", notesShema);
 
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/index.html"); 
-    //res.render("first", {qs: req.query});
- 
 })
 
 app.post('/', function(req, res) {
