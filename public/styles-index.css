@@ -1,10 +1,13 @@
- body
+html {
+  height: 100%;
+}
+
+body
  {
-   margin: 0;
-   padding: 0;   
-   background: #232323;
    color: #cdcdcd;
+   background: linear-gradient(110deg, #4b4b4b 40%, #232323 60%);
    font-family: "Lucida sans", "Avenir", sans-serif;
+   min-height: 100%;
  }
 
  #menuToggle
@@ -153,7 +156,6 @@
   display: block;
   position: relative;  
   font-size: 1.2rem;
-
   text-align: left;
 }
 
@@ -164,9 +166,6 @@
   color: black;
   text-align: left;
 }
-
-
-
 
 .paper {
   margin-top: 3%;

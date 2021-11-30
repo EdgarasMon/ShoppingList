@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Edgaras">
     <title>ShoppingList</title>
-    <link rel="stylesheet" href="css/styles_index.css">    
+    <link rel="stylesheet" type="text/css" href="css/styles-index.css">    
 </head>        
 <body> 
     <div>
@@ -12,7 +12,7 @@
         <h1 class="title">Shopping List</h1>
       </span>    
       <span>
-        <img class="cart_image" src="cart.png" alt="Semrush logo 1" width="50" height="50">  
+        <img class="cart_image" src="/pic/cart.png" width="50" height="50">  
       </span>  
       <span>
         <nav role="navigation">
@@ -31,16 +31,17 @@
         </nav>
       </span>
     </div>
+    
 <div class="wrapper">
   <div class="container">
-      <form id="fieldset1" method="post"  action="/">
+      <form id="fieldset1" method="post" action="/">
         <fieldset id="fieldset1">
           <legend>Enter product description</legend>  
-          <div>  
-              <span><input id="first" type="text" class="textinput" placeholder=". . ."name="first" maxlength="100" size="50"></span>  
-              <span>  
-                <label for="Qty"></label>
-                <select id="Qty">
+          <div class="elements1"> 
+              <span><img class="delete-image" type="button" src='/pic/delete.png' width="23" height="23" id="clear"></span> 
+              <span><input type="text" id="first" name="first" placeholder=". . ." maxlength="100" size="50"></span>  
+              <span>                
+                <select id="Qty" name="Qty">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -53,8 +54,10 @@
                   <option value="10">10</option>
                   <option value="10+">10+</option>
                 </select>
-              </span>         
-              <span><button id="add" name="button"  class="button" type="button" onclick="document.getElementById('first').value = ''">Add</button></span> 
+              </span> 
+      
+              <span><button id="add"><input type="image" class="add-image" alt="Submit" src='/pic/add.png' width="23" height="23"></button></span>
+                              
             </div>    
         </fieldset>    
       </form> 
@@ -62,11 +65,12 @@
     <form>      
       <fieldset id="fieldset2">     
         <legend>Or search from database</legend>
-          <div>     
-            <span><input id="third" type="text" class="textinput" placeholder=". . ."name="third" maxlength="100" size="50"></span> 
+          <div class="elements2">  
+            <span><img class="delete-image" type="button" src='/pic/delete.png' width="23" height="23" id="clear"></span>   
+            <span><input id="third" type="text" class="textinput" placeholder=". . ." name="third" maxlength="100" size="50"></span> 
             <span>  
-              <label for="Qty"></label>
-              <select id="Qty">
+              <label for="Qty2"></label>
+              <select id="Qty2">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -80,22 +84,23 @@
                 <option value="10+">10+</option>
               </select>
             </span>         
-            <span class="button"><button name="button" type="button">Add</button></span> 
+            <span><img class="add-image" type="button" src='/pic/add.png' width="23" height="23" id="add"></span>  
           </div>  
       </fieldset> 
     </form> 
     </div>  
- 
 
-  <div class="container2" id="container2" style="display: none;">
-    <img class="paper" src="pic/paper4.jpg">
+  <div class="container2" id="container2" style="display: none">
+    <img class="paper" id="paper" src="pic/paper4.jpg">
     <div id="list" class="top-left"></div>
     <div class="bottomButons">
       <span id="save">Save</span>
-      <span id="clear">Clear</span>    
+      <span id="clear2">Clear</span> 
+      <span id="addPaper">+</span>    
     </div>  
   </div>
 </div>  
-<script src="javascript.js"></script>
 </body>
+<script src="main.js"></script>
+<script src="javascript.js"></script>
 </html>

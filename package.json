@@ -2,7 +2,7 @@
   "name": "ShoppingList",
   "version": "1.0.0",
   "description": "",
-  "main": "connection.js",
+  "main": "main.js",
   "dependencies": {
     "aws4": "^1.11.0",
     "body-parser": "^1.19.0",
@@ -18,7 +18,9 @@
     "require": "^2.4.20",
     "rollup": "^2.60.0",
     "snappy": "^7.0.5",
+     "type": "module",	
     "uniq": "^1.0.1"
+   
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
