@@ -1,62 +1,44 @@
-document.getElementById('add').onclick = function changeContent(){
+var favorites = [];
+
+document.getElementById('add').onclick = function changeContent() {
     document.getElementById('container2').style.display="block";
     var product = document.getElementById('first').value;
     var productQty = document.getElementById('Qty').value;
-    //console.log("produkt", product, "Qty", Qty);
     list.innerText += " * " + product;
     list.innerText += " " + productQty + "x" + "\n";    
-    //console.log(product, productQty);
-    //localStorage.setItem("Product", product);
-    //localStorage.setItem("product qty", productQty);
-    // var obj = [];
-    // localStorage.setItem('obj', JSON.stringify(obj));
-    // var oldItems = JSON.parse(localStorage.getItem('obj')) || [];
-
-    // var newItem = 
-    // {
-    // 'product': product,
-    // 'productQty': productQty
-    // };
-
-    // oldItems.push(newItem);
-    // localStorage.setItem('obj', JSON.stringify(oldItems));
-    // console.log(localStorage);
-
-        // Parse any JSON previously stored in allEntries
-        var listStorage = localStorage;
-        var existingEntries = JSON.parse(listStorage.getItem("allEntries"));
-        if(existingEntries == null) existingEntries = [];
-        var entry = {
-            "product": product,
-            "product qty": productQty
-        };
-        localStorage.setItem("entry", JSON.stringify(entry));
-        // Save allEntries back to local storage
-        existingEntries.push(entry);
-        listStorage.setItem("allEntries", JSON.stringify(existingEntries));
-        console.log(listStorage);
-
+    //create object
+    var myObj = {
+    "Product" : product,   
+    "Qty" : productQty   
+    }
+    console.log("myobj", myObj);
+    favorites.push(myObj);
+    console.log("fav inside", favorites)        
 }
+    
+    
 
-// export function sayLanguage() {
-//     return listStorage;
-//   }
-
+console.log(JSON.stringify(favorites));
 
 document.getElementById("save").onclick = function() {save()};
 
 function save() {
     document.getElementById("save").innerHTML = "Saved";
-    localStorage.removeItem(product);
-    localStorage.removeItem(productQty);
+    //localStorage.removeItem(product);
+    //localStorage.removeItem(productQty);
+    console.log("favorites in save", favorites);
+    const btn = document.querySelector('save');
+    document.getElementById('data2').innerHTML = JSON.stringify(favorites);
+
 }
+
 
 document.getElementById("clear").onclick = function() {clear()};
 function clear() {
     document.getElementById('first').value='';
     document.getElementById('Qty').value='1';
-    localStorage.clear();
-    listStorage.clear();
+    //localStorage.clear();
+    //listStorage.clear();
 
 }
 

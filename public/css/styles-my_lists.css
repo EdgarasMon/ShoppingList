@@ -1,0 +1,8 @@
+body
+{
+    color: #cdcdcd;
+    background: linear-gradient(110deg, #4b4b4b 40%, #232323 60%);
+    font-family: "Lucida sans", "Avenir", sans-serif;
+    min-height: 100%;
+    font-style: italic;
+}
