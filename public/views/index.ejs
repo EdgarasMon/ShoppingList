@@ -22,6 +22,8 @@
             <span></span>
             <span></span>
             <ul id="menu">
+              <a href="/login"><li>Log in</li></a> 
+              <a href="/signup"><li>Sign Up</li></a>              
               <a href="/My_Lists"><li>My Lists</li></a>
               <a href="/Products.html"><li>Products</li></a>
               <a href="#"><li>Expenses</li></a>
@@ -38,36 +40,46 @@
         <fieldset id="fieldset1">
           <legend>Enter product description</legend>  
           <div class="elements1"> 
-              <span><img class="delete-image" type="button" src='/pic/delete.png' width="23" height="23" id="clear"></span> 
-              <span><input type="text" id="first" name="first" placeholder=". . ." maxlength="100" size="50"></span>  
-              <span>                
-                <select id="Qty" name="Qty">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="10+">10+</option>
-                </select>
-              </span>      
-              <span><button id="add"><input type="image" class="add-image" alt="Submit" src='/pic/add.png' width="23" height="23"></button></span>
-                              
-            </div>    
-        </fieldset>    
+             <button> <input type="image" class="delete-image" type="button" src='/pic/delete2.png' id="clear"></button>
+              <textarea id="first" name="first" placeholder=". . ." rows="3" cols="35"></textarea>                               
+                <select id="Qty" name="Qty"  size="3">
+                  <option value="1" selected="selected">1X</option>
+                  <option value="2">2X</option>
+                  <option value="3">3X</option>
+                  <option value="4">4X</option>
+                  <option value="5">5X</option>
+                  <option value="6">6X</option>
+                  <option value="7">7X</option>
+                  <option value="8">8X</option>
+                  <option value="9">9X</option>
+                  <option value="10">10X</option>
+                  <option value="more">more</option>
+                </select>              
+              <input type="text" id="weight" name="weight" placeholder="weight" maxlength="5" size="3">
+              <select id="units" name="units" size="3"> 
+                <option value="Kg" selected="selected">Kg</option>
+                <option value="Grams">Grams</option>
+                <option value="Lb">LB</option>
+              </select>  
+              <input type="text" id="price" name="price" placeholder="price" maxlength="5" size="3">    
+              <select id="currency" name="currency" size="3">
+                <option value="€" selected="selected">&nbsp€&nbsp</option>
+                <option value="$"> &nbsp$&nbsp </option>
+                <option value="£">&nbsp£</option>                
+              </select>              
+              <button id="add"><input type="image" class="add-image" alt="Submit" src='/pic/add2.png'></button> 
+            </div>                              
+        
+        </fieldset> 
+      </div>   
       </form> 
     
     <form>      
       <fieldset id="fieldset2">     
         <legend>Or search from database</legend>
           <div class="elements2">  
-            <span><img class="delete-image" type="button" src='/pic/delete.png' width="23" height="23" id="clear"></span>   
-            <span><input id="third" type="text" class="textinput" placeholder=". . ." name="third" maxlength="100" size="50"></span> 
-            <span>  
+            <button><input type="image" class="delete-image" type="button" src='/pic/delete.png' width="23" height="23" id="clear"></button>
+            <input id="third" type="text" class="textinput" placeholder=". . ." name="third" maxlength="100" size="66"> 
               <label for="Qty2"></label>
               <select id="Qty2">
                 <option value="1">1</option>
@@ -82,23 +94,22 @@
                 <option value="10">10</option>
                 <option value="10+">10+</option>
               </select>
-            </span>         
-            <span><img class="add-image" type="button" src='/pic/add.png' width="23" height="23" id="add"></span>  
+              <button id="add"><input type="image" class="add-image" alt="Submit" src='/pic/add.png' width="23" height="23"></button>  
           </div>  
       </fieldset> 
     </form> 
-    </div>  
+     
 
   <div class="container2" id="container2" style="display: none">
-    <img class="paper" id="paper" src="pic/paper4.jpg">
+    <img class="paper" id="paper" src="pic/paper3.jpg">
     <div id="list" class="top-left"></div>
     <div class="bottomButons">
     <form action="/" method="post">  
       <textarea style="display: none;" id="data2" name="data2"></textarea> 
       <button id="save">Save</button>
-    </form>  
       <button id="clear2">Clear</button> 
-      <button id="addPaper">+</button>    
+      <button id="addPaper">+</button>  
+    </form>    
     </div>    
   </div>
 </div>  

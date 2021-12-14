@@ -1,8 +1,28 @@
-body
-{
-    color: #cdcdcd;
-    background: linear-gradient(110deg, #4b4b4b 40%, #232323 60%);
-    font-family: "Lucida sans", "Avenir", sans-serif;
-    min-height: 100%;
-    font-style: italic;
+body {
+	color: #cdcdcd;
+	background: linear-gradient(110deg, #4b4b4b 40%, #232323 60%);
+	font-family: 'Lucida sans', 'Avenir', sans-serif;
+	min-height: 100%;
+	font-style: italic;
+}
+
+.data {
+	background-image: url('/pic/paper2.jpg');
+	background-size: cover;
+	color: #000;
+	font-size: 1.5rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px; /* Need a specific value to work */
+	display: grid;
+	justify-content: right;
+	padding: 20px;
+}
+
+.date {
+	border-bottom-style: dashed;
+	border-bottom-color: red;
 }
