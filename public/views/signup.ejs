@@ -8,17 +8,39 @@
 		<link rel="stylesheet" type="text/css" href="css/styles-signup.css" />
 	</head>
 	<body>
-		<h1>Sign Up</h1>
+		<span>
+			<span>
+				<h1 class="title">Shopping List</h1>
+			</span>
+			<span>
+				<img
+					class="cart_image"
+					src="/pic/cart.png"
+					width="50"
+					height="50"
+				/>
+			</span>		
+
 		<form class="signup" action="/signup" method="post">
+			<label>Sign up</label>
+			<p class="errors">	
+				<% if(typeof errors != 'undefined') { %> 
+					<% errors.forEach(function(error) { %>
+					<%= error.msg  %>	
+				</br> 
+				<% }); %> 
+				<% } %>
+			</p>
 			<div>
-				<label for="name">Name :</label>
+				<label for="name">Name :&nbsp&nbsp&nbsp</label>
 				<input
 					type="text"
 					id="name"
 					name="name"
 					maxlength="20"
 					size="20"
-					required
+					value="<%= typeof name != 'undefined' ? name : '' %>"
+					
 				/>
 			</div>
 			<div>
@@ -29,21 +51,35 @@
 					name="password"
 					maxlength="20"
 					size="20"
-					required
+					value="<%= typeof password != 'undefined' ? password : '' %>"
+					
 				/>
 			</div>
 			<div>
-				<label for="email">Email :</label>
+				<label for="password2">Password :</label>
+				<input
+					type="text"
+					id="password2"
+					name="password2"
+					maxlength="20"
+					size="20"
+					value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+					
+				/>
+			</div>
+			<div>
+				<label for="email">Email :&nbsp&nbsp&nbsp</label>
 				<input
 					type="text"
 					id="email"
 					name="email"
 					maxlength="20"
 					size="20"
-					required
+					value="<%= typeof email != 'undefined' ? email : '' %>"
+					
 				/>
 			</div>
-			<button type="submit">Register</button>
+			<button type="submit">Register</button>			
 		</form>
 		<a href="/index2"></a>
 	</body>

@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Edgaras">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles-my_lists.css">  
@@ -14,7 +15,7 @@
         </div>
     </h1>    
     <div>
-        <span class="data">         
+        <span class="data">                  
             <% if (List.length > 0) { %>
             <% List.forEach(List => { %> 
             <div class="date">
@@ -30,14 +31,32 @@
             <%= data[i].units %> 
             <%= data[i].price %> 
             <%= data[i].currency %></br>
-            <% } %> </br>
+            <% } %>
+            <%= List._id %>
+            <a class="delete" onclick="deleteListFromDB()" style="border-style: dotted" data-doc="<%= List._id %>">delete</a>
+            </br>
             <% }) %>
             <% } else { %>
             <p> There are no lists to display...</p>
             <% } %> 
         </span>
-    </div>                
+    </div>       
     </br>
+
+    <script>
+        function deleteListFromDB() {
+            const trash = document.querySelector('a.delete');;
+            const endpoint = `/My_Lists/${trash.dataset.doc}`;
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+                .then((res) => res.json())
+                .then((data) => window.location.href = data.redirect )
+                .catch(err => console.log(err));        
+        }
+
+    </script>    
 </body>
 </html>
 
