@@ -11,8 +11,6 @@ module.exports = passport => {
 				User.findOne({ email: email })
 					.then(User => {
 						if (!User) {
-							var error3 = 'that email ir not registered';
-							console.log(error3);
 							return done(null, false, {
 								message: '* that email ir not registered',
 							});
@@ -26,7 +24,6 @@ module.exports = passport => {
 								if (isMatch) {
 									return done(null, User);
 								} else {
-									console.log('Password incorrect');
 									return done(null, false, {
 										message: '* Password incorrect',
 									});
