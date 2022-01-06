@@ -24,11 +24,9 @@
 				<nav role="navigation">
 					<form class="login" method="post" action="/login">
 						<label>Login</label>
-						<div>
-							<% if(messages.error) { %>
-								<%= messages.error %>		
-							<%	} %>
-						</div>
+						<p class="errors">	
+							<%- include('messages') %>
+						</p>
 						<div>							
 							<label for="email">Email :&nbsp&nbsp&nbsp</label>
 							<input

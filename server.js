@@ -11,139 +11,142 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const flash = require('express-flash');
+const flash = require('connect-flash');
 const session = require('express-session');
-const methodOverride = require('method-override');
+const User = require('./models/user');
+const List = require('./models/list');
+const router = express.Router();
+
+// Passport config
+require('./passport-config')(passport);
+
+// DB config
+const dbURI = require('./config/keys').MongoURI;
+
+// Connect to server
+mongoose
+	.connect(dbURI, { useNewUrlParser: true }, { useUnifiedTopology: true })
+	.then(result => app.listen(3000), console.log('Server is running'))
+	.catch(err => console.log(err));
 
 app.use(express.static(path.join(__dirname, 'public')));
 const viewpath = path.join(__dirname, 'public/views');
 app.set('views', viewpath);
 app.set('view engine', 'ejs');
 
-const Schema = mongoose.Schema;
-
+//Bodyparser
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(flash());
+
+//Express Session
 app.use(
 	session({
-		secret: process.env.SESSION_SECRET,
-		resave: false,
-		saveUninitialized: false,
+		secret: 'secret',
+		resave: true,
+		saveUninitialized: true,
 	})
 );
+
+// passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(methodOverride('_method'));
 
-const dbURI = require('./config/keys').MongoURI;
+// Connect flash
+app.use(flash());
 
-mongoose
-	.connect(dbURI, { useNewUrlParser: true }, { useUnifiedTopology: true })
-	.then(result => app.listen(3000), console.log('Server is running'))
-	.catch(err => console.log(err));
+// Global variables
 
-//--Schemas and Models--
-
-const listShema = new Schema({ List: String }, { timestamps: true });
-
-const listShemaUser = new Schema(
-	{ User: String, password: String, email: String },
-	{ timestamps: true }
-);
-
-const List = mongoose.model('List', listShema);
-const User = mongoose.model('User', listShemaUser);
-
-// Passport
-
-const initializePassport = require('./passport-config');
-initializePassport(passport, email => {
-	users.find(User => User.email === email),
-		id => Users.find(User => User.id === id);
+app.use((req, res, next) => {
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error2 = req.flash('error2');
+	next();
 });
 
 //--Routes--
 
-app.get(
-	'/',
-	/*checkAuthenticated,*/ function (req, res) {
-		res.render('index');
-	}
-);
+app.get('/', (req, res) => {
+	res.render('index');
+});
 
-app.get(
-	'/signup',
-	/*checkAuthenticated,*/ function (req, res) {
-		res.render('signup');
-	}
-);
+app.get('/signup', (req, res) => {
+	res.render('signup');
+});
 
-app.get('/login', checkNotAuthenticated, function (req, res) {
+app.get('/login', (req, res) => {
 	res.render('login');
 });
 
-app.post(
-	'/login',
-	passport.authenticate('local', {
-		successRedirect: '/index2',
-		failureMessage: '/login',
-		failureFlash: true,
-	})
-);
-
 // Sign-up
-app.post(
-	'/signup',
-	/*checkNotAuthenticated,*/ async (req, res) => {
-		const { name, password, password2, email } = req.body;
-		const errors = [];
+app.post('/signup', async (req, res) => {
+	const { name, password, password2, email } = req.body;
+	const errors = [];
 
-		if (!name || !password || !password2 || !email) {
-			errors.push({ msg: '* Please fill in all fields' });
-		}
-
-		if (password !== password2) {
-			errors.push({ msg: '* Passwords do not match' });
-		}
-
-		if (password.length < 6) {
-			errors.push({ msg: '* Password should be min 6 characters' });
-		}
-
-		await User.findOne({ email: email }).then(User => {
-			if (User) {
-				//user exists
-				errors.push({ msg: '* Email is already registered' });
-			}
-		});
-
-		if (errors.length > 0) {
-			res.render('signup', {
-				errors,
-				name,
-				password,
-				password2,
-				email,
-			});
-		} else {
-			try {
-				// Hash password
-				var hashedPassword = await bcrypt.hash(req.body.password, 10);
-			} catch {
-				res.redirect('/signup');
-			}
-			let newUser = new User({
-				User: req.body.name,
-				password: hashedPassword,
-				email: req.body.email,
-			});
-			newUser.save();
-			res.redirect('login');
-		}
+	if (!name || !password || !password2 || !email) {
+		errors.push({ msg: '* Please fill in all fields' });
 	}
-);
 
-app.post('/', (req, res) => {
+	if (password !== password2) {
+		errors.push({ msg: '* Passwords do not match' });
+	}
+
+	if (password.length < 6) {
+		errors.push({ msg: '* Password should be min 6 characters' });
+	}
+
+	await User.findOne({ email: email }).then(User => {
+		if (User) {
+			//user exists
+			errors.push({ msg: '* Email is already registered' });
+		}
+	});
+
+	if (errors.length > 0) {
+		res.render('signup', {
+			errors,
+			name,
+			password,
+			password2,
+			email,
+		});
+	} else {
+		try {
+			// Hash password
+			var hashedPassword = await bcrypt.hash(req.body.password, 10);
+		} catch {
+			res.redirect('/signup');
+		}
+		let newUser = new User({
+			User: req.body.name,
+			password: hashedPassword,
+			email: req.body.email,
+		});
+		newUser.save();
+		req.flash('success_msg', '* You are now registered and can log in');
+		res.redirect('login');
+	}
+});
+
+// Login
+app.post('/login', (req, res, next) => {
+	passport.authenticate('local', {
+		successRedirect: 'dashboard',
+		failureRedirect: 'login',
+		failureFlash: true,
+	})(req, res, next);
+});
+
+// Log out
+app.get('/logout', (req, res) => {
+	req.logout();
+	req.flash('success_msg', '* You are logged out');
+	res.redirect('login');
+});
+
+// Non registered user
+app.post('/', (req, res) => {});
+
+// post List
+app.post('/dashboard', (req, res) => {
 	let newNote = new List({
 		List: req.body.data2,
 	});
@@ -152,16 +155,9 @@ app.post('/', (req, res) => {
 	}
 });
 
-app.get('/index2', (req, res) => {
-	User.find()
-		.sort({ createdAt: -1 })
-		.then(result => {
-			res.render('index2', { User: result });
-		})
-		.catch(err => {
-			console.log(err);
-		});
-});
+app.get('/dashboard', checkAuthenticated, (req, res) =>
+	res.render('dashboard', { User: req.user.User })
+);
 
 app.get('/My_Lists', (req, res) => {
 	List.find()
@@ -186,26 +182,15 @@ app.delete('/My_Lists/:id', (req, res) => {
 		});
 });
 
-app.delete('/logout', (req, res) => {
-	req.logout();
-	res.redirect('/login');
-});
-
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
-	res.redirect('/login');
+	req.flash('error_msg', '* Please log in to view this');
+	res.redirect('login');
 }
 
-function checkNotAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		res.redirect('/');
-	}
-	next();
-}
-
-// //--404 page--
-// app.use((req, res) => {
-// 	res.sendFile('public/404.html', { root: __dirname });
-// });
+//--404 page--
+app.use((req, res) => {
+	res.sendFile('public/404.html', { root: __dirname });
+});

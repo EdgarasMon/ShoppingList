@@ -17,18 +17,9 @@
       </span>  
       <div>
         <span>        
-          <%= "Hi" %>
-          <% if (User.length > 0) { %>
-            <% User.forEach(User => { %>                  
-          <%= User.User %>
-          <% }) %>
-          <% } else { %>
-            <p> No user...</p>
-            <% } %> 
-        </span> 
-        <form action="/logout?_method=DELETE" method="post"> 
-          <span><button type="submit">Log Out</button></span>
-        </form>
+          <p> Hi <%= User %></p>
+        </span>        
+          <form action="/logout"><button>Log Out</button></form>      
       </div>
       <span>
         <nav role="navigation">
@@ -38,8 +29,6 @@
             <span></span>
             <span></span>
             <ul id="menu">
-              <a href="/login"><li>Log in</li></a> 
-              <a href="/signup"><li>Sign Up</li></a>              
               <a href="/My_Lists"><li>My Lists</li></a>
               <a href="/Products.html"><li>Products</li></a>
               <a href="#"><li>Expenses</li></a>
@@ -52,7 +41,7 @@
     
 <div class="wrapper">
   <div class="container">
-      <form id="fieldset1" method="post" action="/">
+      <form id="fieldset1" method="post" action="/dashboard">
         <fieldset id="fieldset1">
           <legend>Enter product description</legend>  
           <div class="elements1"> 
@@ -120,7 +109,7 @@
     <img class="paper" id="paper" src="pic/paper3.jpg">
     <div id="list" class="top-left"></div>
     <div class="bottomButons">
-    <form action="/" method="post">  
+    <form action="/dashboard" method="post">  
       <textarea style="display: none;" id="data2" name="data2"></textarea> 
       <button id="save">Save</button>
       <button id="clear2">Clear</button> 

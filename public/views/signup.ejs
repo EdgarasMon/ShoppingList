@@ -24,12 +24,8 @@
 		<form class="signup" action="/signup" method="post">
 			<label>Sign up</label>
 			<p class="errors">	
-				<% if(typeof errors != 'undefined') { %> 
-					<% errors.forEach(function(error) { %>
-					<%= error.msg  %>	
-				</br> 
-				<% }); %> 
-				<% } %>
+				<%- include('messages') %>
+				</br>				
 			</p>
 			<div>
 				<label for="name">Name :&nbsp&nbsp&nbsp</label>

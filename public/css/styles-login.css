@@ -18,3 +18,8 @@ body {
 	margin-right: auto;
 	width: 270px; /* Need a specific value to work */
 }
+
+.errors {
+	background-color: rgb(255, 255, 120);
+	color: black;
+}
