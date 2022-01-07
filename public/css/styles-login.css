@@ -23,3 +23,8 @@ body {
 	background-color: rgb(255, 255, 120);
 	color: black;
 }
+
+a {
+	color: inherit; /* blue colors for links too */
+	text-decoration: inherit; /* no underline */
+}

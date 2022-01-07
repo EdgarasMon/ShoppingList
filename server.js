@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const viewpath = path.join(__dirname, 'public/views');
 app.set('views', viewpath);
 app.set('view engine', 'ejs');
-//app.use(expressLayouts);
 
 //Bodyparser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,6 +61,7 @@ app.use('/', require('./public/views/routes'));
 app.use('/login', require('./public/views/routes'));
 app.use('/signup', require('./public/views/routes'));
 app.use('/dashboard', require('./public/views/routes'));
+app.use('/dashboard/:id', require('./public/views/routes'));
 app.use('/My_Lists', require('./public/views/routes'));
 
 //--404 page--

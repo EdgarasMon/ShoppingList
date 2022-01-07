@@ -214,6 +214,13 @@ span#addPaper {
 	position: relative;
 }
 
+.grocery {
+	position: relative;
+	display: block;
+	left: 5%;
+	top: 5%;
+}
+
 .elements1,
 div.elements2 {
 	position: relative;

@@ -2,6 +2,7 @@ var favorites = [];
 
 document.getElementById('add').onclick = function changeContent() {
 	document.getElementById('container2').style.display = 'block';
+	document.getElementById('grocery').style.display = 'none';
 	var product = document.getElementById('first').value;
 	var productQty = document.getElementById('Qty').value;
 	var weight = document.getElementById('weight').value;
@@ -41,7 +42,7 @@ document.getElementById('save').onclick = function () {
 
 function save() {
 	document.getElementById('save').innerHTML =
-		'For saving Data please sign up';
+		'For saving grocery List please sign up';
 	console.log('favorites in save', favorites);
 	const btn = document.querySelector('save');
 	//document.getElementById('data2').innerHTML = JSON.stringify(favorites);

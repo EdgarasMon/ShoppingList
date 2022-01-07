@@ -10,7 +10,7 @@
 		<div>
 		<span>
 			<span>
-				<h1 class="title">Shopping List</h1>
+				<a href="/"><h1 class="title">Shopping List</h1></a>
 			</span>
 			<span>
 				<img
@@ -23,10 +23,10 @@
 			<span>
 				<nav role="navigation">
 					<form class="login" method="post" action="/login">
-						<label>Login</label>
-						<p class="errors">	
+						<h1>Login</h1>
+						<span class="errors">	
 							<%- include('messages') %>
-						</p>
+						</span>
 						<div>							
 							<label for="email">Email :&nbsp&nbsp&nbsp</label>
 							<input
@@ -49,8 +49,8 @@
 								required
 							/>
 						</div>
-						<div><label><a href="/signup">Sign up</a></label></div>
 						<button type="submit">Login</button>
+						<div><label><a href="/signup">--> Sign up <--</a></label></div>
 					</form>
 				</nav>
 			</span>

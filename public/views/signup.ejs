@@ -10,7 +10,7 @@
 	<body>
 		<span>
 			<span>
-				<h1 class="title">Shopping List</h1>
+				<a href="/"><h1 class="title">Shopping List</h1></a>
 			</span>
 			<span>
 				<img
@@ -22,11 +22,11 @@
 			</span>		
 
 		<form class="signup" action="/signup" method="post">
-			<label>Sign up</label>
-			<p class="errors">	
+			<h1><label>Sign up</label></h1>
+			<span class="errors">	
 				<%- include('messages') %>				
 				</br>				
-			</p>
+			</span>
 			<div>
 				<label for="name">Name :&nbsp&nbsp&nbsp</label>
 				<input
@@ -74,8 +74,9 @@
 					value="<%= typeof email != 'undefined' ? email : '' %>"
 					
 				/>
-			</div>
-			<button type="submit">Register</button>			
+			</div>			
+			<button type="submit">Register</button>	
+			<div><label><a href="/login">--> Log in <--</a></label></div>		
 		</form>
 		<a href="/index2"></a>
 	</body>

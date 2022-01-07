@@ -8,6 +8,18 @@ const User = require('../../models/user');
 
 //--Routes--
 
+router
+	.route('/')
+	.get((req, res) => {
+		res.render('index');
+	})
+	.post((req, res) => {
+		let newNote = new List({
+			List: req.body.data2,
+			User_id: req.body._id,
+		});
+	});
+
 // Login
 router
 	.route('/login')
@@ -86,18 +98,33 @@ router.get('/logout', (req, res) => {
 });
 
 // post List
-router.post('/dashboard', (req, res) => {
-	let newNote = new List({
-		List: req.body.data2,
+router
+	.route('/dashboard')
+	.get(
+		checkAuthenticated,
+		(req, res) => res.render('dashboard', { User: req.user.User })
+		// .params("id", (req, res, next) {
+		// 	User.findById(id, (req, res, next, id) => {
+		// 		if (err) {
+		// 			res.json(err);
+		// 		} else {
+		// 			res.render('dashboard', { User: id });
+		// 			next();
+		// 		}
+		// 	})
+		// 	})
+	)
+	.post((req, res) => {
+		let newNote = new List({
+			List: req.body.data2,
+			User_id: req.body._id,
+		});
+		if (req.body.data2 != null) {
+			newNote.save();
+			console.log(req.body.data2);
+			console.log(req.body.id);
+		}
 	});
-	if (req.body.data2 != null) {
-		newNote.save();
-	}
-});
-
-router.get('/dashboard', checkAuthenticated, (req, res) =>
-	res.render('dashboard', { User: req.user.User })
-);
 
 // My_Lists
 
