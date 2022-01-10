@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const router = express.Router();
 const List = require('../../models/list');
 const User = require('../../models/user');
+const passportConfig = require('../../passport-config');
+const { ObjectId } = require('mongodb');
 
 //--Routes--
 
@@ -100,36 +103,25 @@ router.get('/logout', (req, res) => {
 // post List
 router
 	.route('/dashboard')
-	.get(
-		checkAuthenticated,
-		(req, res) => res.render('dashboard', { User: req.user.User })
-		// .params("id", (req, res, next) {
-		// 	User.findById(id, (req, res, next, id) => {
-		// 		if (err) {
-		// 			res.json(err);
-		// 		} else {
-		// 			res.render('dashboard', { User: id });
-		// 			next();
-		// 		}
-		// 	})
-		// 	})
-	)
+	.get(checkAuthenticated, (req, res) => {
+		res.render('dashboard', { User: req.user.User });
+	})
 	.post((req, res) => {
 		let newNote = new List({
 			List: req.body.data2,
-			User_id: req.body._id,
+			User_id: req.user._id,
 		});
 		if (req.body.data2 != null) {
 			newNote.save();
-			console.log(req.body.data2);
-			console.log(req.body.id);
 		}
 	});
 
 // My_Lists
 
-router.get('/My_Lists', (req, res) => {
-	List.find()
+router.get('/My_Lists', checkAuthenticated, (req, res) => {
+	const id = req.user._id;
+
+	List.find({ User_id: id })
 		.sort({ createdAt: -1 })
 		.then(result => {
 			res.render('My_Lists', { List: result });

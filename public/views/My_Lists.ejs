@@ -7,38 +7,43 @@
     <link rel="stylesheet" type="text/css" href="css/styles-my_lists.css">  
     <title>My Lists</title>
 </head>
-<body>
-    <h1>
-        <div>
-            <!--<span><a><a href="./">←</a></a></span>-->
-            <span><a class="title">My Lists</a></span>
-        </div>
-    </h1>    
+<body>           
+    <div>
+        <span>
+            <a href="/dashboard">
+                <img src="pic/back2.png" />    
+            </a>
+        </span>  
+        <span>
+            <a class="title">My Lists</a>
+        </span>    
+    </div>   
+       
     <div>
         <span class="data">                  
             <% if (List.length > 0) { %>
-            <% List.forEach(List => { %> 
-            <div class="date">
-                <%= "List created: "%>               
-                <% var date =  List.createdAt.toString() %>
-                <%= date.slice(0, -45) %>
-            </div></br>    
-            <% const data = JSON.parse(List.List) %>
-            <% for (var i = 0; i < data.length; i++) {  %>
-            <%= data[i].Product %>
-            <%= data[i].Qty + 'X' %> 
-            <%= data[i].weight %>
-            <%= data[i].units %> 
-            <%= data[i].price %> 
-            <%= data[i].currency %></br>
-            <% } %>
-            <%= List._id %>
-            <a class="delete" onclick="deleteListFromDB()" style="border-style: dotted" data-doc="<%= List._id %>">delete</a>
-            </br>
-            <% }) %>
-            <% } else { %>
-            <p> There are no lists to display...</p>
-            <% } %> 
+                <% List.forEach(List => { %> 
+                <div class="date">
+                    <%= "List created: "%>               
+                    <% var date =  List.createdAt.toString() %>
+                    <%= date.slice(0, -45) %>
+                </div></br>    
+                <% const data = JSON.parse(List.List) %>
+                <% for (var i = 0; i < data.length; i++) {  %>
+                <%= data[i].Product %>
+                <%= data[i].Qty + 'X' %> 
+                <%= data[i].weight %>
+                <%= data[i].units %> 
+                <%= data[i].price %> 
+                <%= data[i].currency %></br>
+                <% } %>
+                <a class="delete" onclick="deleteListFromDB()" data-doc="<%= List._id %>">delete</a>
+                    </br>
+                <% }) %>
+                <% } else { %>
+                    <p> There are no lists to display...</p>
+                <% } %>       
+
         </span>
     </div>       
     </br>

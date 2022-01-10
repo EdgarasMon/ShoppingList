@@ -26,3 +26,20 @@ body {
 	border-bottom-style: dashed;
 	border-bottom-color: red;
 }
+
+a {
+	color: inherit; /* blue colors for links too */
+	text-decoration: inherit; /* no underline */
+}
+
+.title {
+	font-size: 2.5rem;
+}
+
+.delete {
+	border-style: dotted;
+	display: inline-block;
+	width: auto;
+	text-align: center;
+	margin: auto;
+}

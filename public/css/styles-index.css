@@ -227,3 +227,12 @@ div.elements2 {
 	display: flex;
 	align-items: stretch;
 }
+
+textarea#first,
+select#qty,
+input#weight,
+select#units,
+input#price,
+select#currency {
+	font-size: 1rem;
+}
