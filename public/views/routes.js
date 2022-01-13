@@ -6,6 +6,7 @@ const passport = require('passport');
 const router = express.Router();
 const List = require('../../models/list');
 const User = require('../../models/user');
+const Products = require('../../models/products');
 const passportConfig = require('../../passport-config');
 const { ObjectId } = require('mongodb');
 
@@ -101,10 +102,12 @@ router.get('/logout', (req, res) => {
 });
 
 // post List
+
 router
 	.route('/dashboard')
 	.get(checkAuthenticated, (req, res) => {
-		res.render('dashboard', { User: req.user.User });
+		const User = req.user.User;
+		res.render('dashboard', { User: User });
 	})
 	.post((req, res) => {
 		let newNote = new List({
@@ -133,10 +136,24 @@ router.get('/My_Lists', checkAuthenticated, (req, res) => {
 
 router.delete('/My_Lists/:id', (req, res) => {
 	const id = req.params.id;
+	console.log(id);
 
 	List.findByIdAndDelete(id)
 		.then(result => {
 			res.json({ redirect: '/My_Lists' });
+		})
+		.catch(err => {
+			console.log(err);
+		});
+});
+
+router.get('/search2', (req, res) => {
+	const products = req.query.third;
+	console.log(products);
+
+	Products.find({ name: { $regex: products } })
+		.then(result => {
+			res.json({ redirect: 'search', Products: result });
 		})
 		.catch(err => {
 			console.log(err);

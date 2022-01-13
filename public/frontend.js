@@ -76,3 +76,8 @@ function addPaper() {
 	block.appendChild(img);
 	document.getElementById('addPaper').remove();
 }
+
+function showInput() {
+	document.getElementById('container3').innerHTML =
+		document.getElementById('third').value;
+}

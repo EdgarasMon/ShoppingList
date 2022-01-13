@@ -21,7 +21,11 @@
 				/>
 			</span>
 			<div>
-				<span> Hi <%= User %> </span>
+				<span> 
+
+							Hi <%= locals.User %>
+
+				</span>
 				<form action="/logout"><button>Log Out</button></form>
 			</div>
 			<span>
@@ -64,7 +68,7 @@
 								rows="3"
 								cols="30"
 							></textarea>
-							<select id="Qty" name="Qty" size="3">
+							<select id="Qty" name="Qty" size="3" style="width: 50px">
 								<option value="1" selected="selected">
 									1X
 								</option>
@@ -77,7 +81,7 @@
 								<option value="8">8X</option>
 								<option value="9">9X</option>
 								<option value="10">10X</option>
-								<option value="more">more</option>
+								<option value="more">>10X</option>
 							</select>
 							<input
 								type="text"
@@ -86,6 +90,7 @@
 								placeholder="weight"
 								maxlength="5"
 								size="3"
+								style="width: 55px"
 							/>
 							<select id="units" name="units" size="3">
 								<option value="Kg" selected="selected">
@@ -101,6 +106,7 @@
 								placeholder="price"
 								maxlength="5"
 								size="3"
+								style="width: 50px"
 							/>
 							<select id="currency" name="currency" size="3">
 								<option value="€" selected="selected">
@@ -120,59 +126,53 @@
 						</div>
 					</fieldset>
 				</form>
-			</div>
 
-			<form>
-				<fieldset id="fieldset2">
-					<legend>Or search from database</legend>
-					<div class="elements2">
-						<button>
+				<form method="get" action="/search2">
+					<fieldset id="fieldset2">
+						<legend>Or search from database</legend>
+						<div class="elements2">
+							<button>
+								<input
+									type="image"
+									class="delete-image"
+									type="button"
+									src="/pic/delete.png"
+									width="23"
+									height="23"
+									id="clear"
+								/>
+							</button>
 							<input
-								type="image"
-								class="delete-image"
-								type="button"
-								src="/pic/delete.png"
-								width="23"
-								height="23"
-								id="clear"
+								id="third"
+								type="text"
+								class="textinput"
+								placeholder=". . ."
+								name="third"
+								maxlength="100"
+								size="65"
 							/>
-						</button>
-						<input
-							id="third"
-							type="text"
-							class="textinput"
-							placeholder=". . ."
-							name="third"
-							maxlength="100"
-							size="66"
-						/>
-						<label for="Qty2"></label>
-						<select id="Qty2">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="10+">10+</option>
-						</select>
-						<button id="add">
-							<input
-								type="image"
-								class="add-image"
-								alt="Submit"
-								src="/pic/add.png"
-								width="23"
-								height="23"
-							/>
-						</button>
+							<label for="Qty2"></label>
+							<button id="search">
+								<input
+									type="image"
+									onclick="showInput()" 
+									class="search"
+									src="/pic/search.png"
+									alt="Submit"
+									width="23"
+									height="23"
+								/>
+							</button>
+						</div>					
+				
 					</div>
-				</fieldset>
-			</form>
+							<div class="container3" id="container3" data-doc="<%= Products %>" >
+							
+										<%= Products %>
+									</br>
+							</div>
+					</fieldset>
+				</form>
 
 			<div class="container2" id="container2" style="display: none">
 				<img class="paper" id="paper" src="pic/paper3.jpg" />
@@ -198,7 +198,9 @@
 				height="450"
 			/>
 		</div>
+	</div>
 	</body>
+
 	<script src="server.js"></script>
 	<script src="frontend.js"></script>
 </html>

@@ -40,7 +40,6 @@ app.use(
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-//console.log(app.use(passport.session()));
 
 // Connect flash
 app.use(flash());
@@ -51,6 +50,7 @@ app.use((req, res, next) => {
 	res.locals.success_msg = req.flash('success_msg');
 	res.locals.error_msg = req.flash('error_msg');
 	res.locals.error = req.flash('error');
+	res.locals.Products = req.flash('Products');
 	next();
 });
 
@@ -62,7 +62,8 @@ app.use('/', require('./public/views/routes'));
 app.use('/login', require('./public/views/routes'));
 app.use('/signup', require('./public/views/routes'));
 app.use('/dashboard', require('./public/views/routes'));
-app.use('/dashboard/:id', require('./public/views/routes'));
+//app.use('/dashboard:id', require('./public/views/routes'));
+app.use('/search', require('./public/views/routes'));
 app.use('/My_Lists', require('./public/views/routes'));
 
 //--404 page--

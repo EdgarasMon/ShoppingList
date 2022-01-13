@@ -146,7 +146,6 @@ body {
 	font-size: 1.2rem;
 	color: black;
 	text-align: left;
-	/*justify-content: center;*/
 }
 
 img#paper {
@@ -230,9 +229,11 @@ div.elements2 {
 
 textarea#first,
 select#qty,
+select#qty2,
 input#weight,
 select#units,
 input#price,
-select#currency {
+select#currency,
+input#third.textinput {
 	font-size: 1rem;
 }
