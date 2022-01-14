@@ -25,13 +25,14 @@
 
 				</nav>
 			</span>
-            <h1>Items found:</h1>
+            <h2>Items found by phrase "<%= products %>" :</h2>
             </br>
             <span class="items">
                 
                     <% if (Products.length > 0) { %>
                     <% Products.forEach(Products => { %> 
-                <span class="item">    
+			
+                <span class="item" id="MySpan">    
                     <img src="<%= Products.image %>" class="image"/>    
                     </br>
                     <span class="name">
@@ -42,11 +43,15 @@
                         </br>
                     Price: <%= Products.price %>
                          </br>
-                    <a href="<%= Products.url%>" id="url" target="_blank">Link to buy:</a>   
-                </span>        
+                    <a href="<%= Products.url%>" id="url" target="_blank">Link to buy:</a>  
+						</br>			    
+					<div class="hide"><button><img src="/pic/add3.png"/></button></div>
+                </span>  
+				  
+					   
                     <% }) %>
                     <% } else { %>
-                        <p> There are no products to display...</p>
+                        <h2> Items not found...</h2>
                     <% } %>                 
             </span>    
 		</div>
@@ -54,4 +59,3 @@
 	<script src=""></script>
 	<script src=""></script>
 </html>
-

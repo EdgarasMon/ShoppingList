@@ -1,6 +1,5 @@
 import { data } from '/views/routes.js';
 console.log(data);
-import { endpoints } from '/wildcard-api/client';
 
 var favorites = [];
 
@@ -86,9 +85,6 @@ document.getElementById('search').onclick = function () {
 };
 
 function search() {
-	// console.log('labas')(async () => {
-	// 	const data = await endpoints.myFirstEndpoint();
-	// })();
 	console.log(result);
 	document.getElementById('container3').innerText = loadJson();
 	document.getElementById('container3');

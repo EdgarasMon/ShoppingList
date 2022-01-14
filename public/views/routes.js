@@ -160,7 +160,7 @@ router.get('/search', (req, res) => {
 			//var data = JSON.result;
 			//console.log(data);
 
-			res.render('search', { Products: result });
+			res.render('search', { Products: result, products: products });
 			//res.json(data);
 		})
 		.catch(err => {
