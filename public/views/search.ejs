@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Edgaras" />
+		<title>Shopping List</title>
+		<link rel="stylesheet" type="text/css" href="css/styles-search.css" />
+	</head>
+	<body>
+		<div>
+		<span>
+			<span>
+				<a href="/"><h1 class="title">Shopping List</h1></a>
+			</span>
+			<span>
+				<img
+					class="cart_image"
+					src="/pic/cart.png"
+					width="50"
+					height="50"
+				/>
+			</span>
+			<span>
+				<nav role="navigation">
+
+				</nav>
+			</span>
+            <h1>Items found:</h1>
+            </br>
+            <span class="items">
+                
+                    <% if (Products.length > 0) { %>
+                    <% Products.forEach(Products => { %> 
+                <span class="item">    
+                    <img src="<%= Products.image %>" class="image"/>    
+                    </br>
+                    <span class="name">
+                        <%= Products.name %>
+                    </span>                    
+                        </br>
+                    <%= Products.type %>
+                        </br>
+                    Price: <%= Products.price %>
+                         </br>
+                    <a href="<%= Products.url%>" id="url" target="_blank">Link to buy:</a>   
+                </span>        
+                    <% }) %>
+                    <% } else { %>
+                        <p> There are no products to display...</p>
+                    <% } %>                 
+            </span>    
+		</div>
+	</body>
+	<script src=""></script>
+	<script src=""></script>
+</html>
+

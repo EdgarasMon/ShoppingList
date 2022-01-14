@@ -1,3 +1,7 @@
+import { data } from '/views/routes.js';
+console.log(data);
+import { endpoints } from '/wildcard-api/client';
+
 var favorites = [];
 
 document.getElementById('add').onclick = function changeContent() {
@@ -77,7 +81,18 @@ function addPaper() {
 	document.getElementById('addPaper').remove();
 }
 
-function showInput() {
-	document.getElementById('container3').innerHTML =
-		document.getElementById('third').value;
+document.getElementById('search').onclick = function () {
+	search();
+};
+
+function search() {
+	// console.log('labas')(async () => {
+	// 	const data = await endpoints.myFirstEndpoint();
+	// })();
+	console.log(result);
+	document.getElementById('container3').innerText = loadJson();
+	document.getElementById('container3');
+	fetch('http://localhost:3000/dashboard')
+		.then(response => response.json())
+		.then(data => console.log(data));
 }

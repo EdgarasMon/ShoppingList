@@ -9,6 +9,7 @@ const User = require('../../models/user');
 const Products = require('../../models/products');
 const passportConfig = require('../../passport-config');
 const { ObjectId } = require('mongodb');
+const cors = require('cors');
 
 //--Routes--
 
@@ -147,13 +148,20 @@ router.delete('/My_Lists/:id', (req, res) => {
 		});
 });
 
-router.get('/search2', (req, res) => {
+//app.use(cors());
+
+router.get('/search', (req, res) => {
 	const products = req.query.third;
 	console.log(products);
 
 	Products.find({ name: { $regex: products } })
 		.then(result => {
-			res.json({ redirect: 'search', Products: result });
+			//res.json({ redirect: 'search', Products: result });
+			//var data = JSON.result;
+			//console.log(data);
+
+			res.render('search', { Products: result });
+			//res.json(data);
 		})
 		.catch(err => {
 			console.log(err);

@@ -127,7 +127,9 @@
 					</fieldset>
 				</form>
 
-				<form method="get" action="/search2">
+				<div id="trial"></div>
+
+				<form method="get" action="/search">
 					<fieldset id="fieldset2">
 						<legend>Or search from database</legend>
 						<div class="elements2">
@@ -154,8 +156,7 @@
 							<label for="Qty2"></label>
 							<button id="search">
 								<input
-									type="image"
-									onclick="showInput()" 
+									type="image"									
 									class="search"
 									src="/pic/search.png"
 									alt="Submit"
@@ -166,10 +167,7 @@
 						</div>					
 				
 					</div>
-							<div class="container3" id="container3" data-doc="<%= Products %>" >
-							
-										<%= Products %>
-									</br>
+							<div class="container3" id="container3">
 							</div>
 					</fieldset>
 				</form>

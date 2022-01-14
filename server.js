@@ -7,6 +7,7 @@ const path = require('path');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const cors = require('cors');
 
 // Passport config
 require('./passport-config')(passport);
@@ -58,11 +59,12 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
 	res.render('index');
 });
+app.use(cors());
 app.use('/', require('./public/views/routes'));
 app.use('/login', require('./public/views/routes'));
 app.use('/signup', require('./public/views/routes'));
 app.use('/dashboard', require('./public/views/routes'));
-//app.use('/dashboard:id', require('./public/views/routes'));
+app.use('/dashboard?third', require('./public/views/routes'));
 app.use('/search', require('./public/views/routes'));
 app.use('/My_Lists', require('./public/views/routes'));
 
