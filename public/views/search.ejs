@@ -8,54 +8,80 @@
 	</head>
 	<body>
 		<div>
-		<span>
-			<span>
-				<a href="/"><h1 class="title">Shopping List</h1></a>
-			</span>
-			<span>
-				<img
-					class="cart_image"
-					src="/pic/cart.png"
-					width="50"
-					height="50"
-				/>
-			</span>
-			<span>
-				<nav role="navigation">
+			<span style="display: flex; align-items: center">
+				<span>
+					<a href="/dashboard">
+						<img src="pic/back2.png" />    
+					</a>
+				</span> 
+				<span>
+					<a href="/"><h1 class="title">Shopping List</h1></a>
+				</span>
+				<span>
+					<img
+						class="cart_image"
+						src="/pic/cart.png"
+						width="50"
+						height="50"
+					/>
+				</span>
+			</span>	
+				<span>
+					<nav role="navigation">
 
-				</nav>
-			</span>
-            <h2>Items found by phrase "<%= products %>" :</h2>
-            </br>
-            <span class="items">
-                
-                    <% if (Products.length > 0) { %>
-                    <% Products.forEach(Products => { %> 
-			
-                <span class="item" id="MySpan">    
-                    <img src="<%= Products.image %>" class="image"/>    
-                    </br>
-                    <span class="name">
-                        <%= Products.name %>
-                    </span>                    
-                        </br>
-                    <%= Products.type %>
-                        </br>
-                    Price: <%= Products.price %>
-                         </br>
-                    <a href="<%= Products.url%>" id="url" target="_blank">Link to buy:</a>  
-						</br>			    
-					<div class="hide"><button><img src="/pic/add3.png"/></button></div>
-                </span>  
-				  
-					   
-                    <% }) %>
-                    <% } else { %>
-                        <h2> Items not found...</h2>
-                    <% } %>                 
-            </span>    
+					</nav>
+				</span>
+				<h2>Items by phrase "<%= products %>" :</h2>
+				</br>
+				<script>
+					let name = [];
+					var id = 0;
+
+				</script>	
+				<span class="items">
+					
+						<% if (Products.length > 0) { %>
+						<% for (let i = 0; i < Products.length; i++) { %> 
+
+					<span class="item" id="MySpan">    
+						<img src="<%= Products[i].image %>" class="image"/>    
+						</br>
+						<span class="name" id="name">
+							<%= Products[i].name %>							
+						</span> 
+							</br>                   
+						<%= Products[i].type %>
+							</br>
+						Price: <%= Products[i].price %>
+							</br>
+						<a href="<%= Products[i].url%>" id="url" target="_blank">Link to buy:</a>  
+						<div class="hide" >
+							<button id="<%= Products[i].name %>" class="<%= Products.name %>" onClick="saveProduct(this.id)">
+								<img src="/pic/add3.png"/>
+							</button>
+						</div>
+					</span>
+						<% } %>
+						<% } else { %>
+							<h2> Items not found...</h2>
+						<% } %>                
+			    
 		</div>
 	</body>
-	<script src=""></script>
-	<script src=""></script>
+	<script src="frontend.js"></script>	
+	<script>
+
+		function saveProduct(selectedProductName) {
+			var selectedProduct = createProductAsObject(
+						selectedProductName
+			);
+
+			console.log('selectedProduct ', selectedProduct)
+
+			addProductToLocalStorage(selectedProduct);			
+		}
+		
+	</script>
+	
+	
 </html>

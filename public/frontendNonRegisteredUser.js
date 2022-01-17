@@ -1,6 +1,6 @@
 var favorites = [];
 
-document.getElementById('add').onclick = function changeContent() {
+function changeContent() {
 	document.getElementById('container2').style.display = 'block';
 	document.getElementById('grocery').style.display = 'none';
 	var product = document.getElementById('first').value;
@@ -32,7 +32,7 @@ document.getElementById('add').onclick = function changeContent() {
 	console.log('myobj', myObj);
 	favorites.push(myObj);
 	console.log('fav inside', favorites);
-};
+}
 
 console.log(JSON.stringify(favorites));
 

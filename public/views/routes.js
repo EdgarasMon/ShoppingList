@@ -148,8 +148,6 @@ router.delete('/My_Lists/:id', (req, res) => {
 		});
 });
 
-//app.use(cors());
-
 router.get('/search', (req, res) => {
 	const products = req.query.third;
 	console.log(products);
@@ -167,6 +165,19 @@ router.get('/search', (req, res) => {
 			console.log(err);
 		});
 });
+
+// router.get('/search/:id', (req, res) => {
+// 	const id = req.params.id;
+// 	console.log(id);
+
+// 	Products.find(id)
+// 		.then(result => {
+// 			res.json({ redirect: '/search' }, { id: id });
+// 		})
+// 		.catch(err => {
+// 			console.log(err);
+// 		});
+// });
 
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {

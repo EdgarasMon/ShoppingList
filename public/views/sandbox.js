@@ -111,3 +111,98 @@ router.get('/search', async (req, res) => {
 <% } %>
 
 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Edgaras" />
+		<title>Shopping List</title>
+		<link rel="stylesheet" type="text/css" href="css/styles-search.css" />
+	</head>
+	<body>
+		<div>
+			<span style="display: flex; align-items: center">
+				<span>
+					<a href="/dashboard">
+						<img src="pic/back2.png" />    
+					</a>
+				</span> 
+				<span>
+					<a href="/"><h1 class="title">Shopping List</h1></a>
+				</span>
+				<span>
+					<img
+						class="cart_image"
+						src="/pic/cart.png"
+						width="50"
+						height="50"
+					/>
+				</span>
+			</span>	
+				<span>
+					<nav role="navigation">
+
+					</nav>
+				</span>
+				<h2>Items by phrase "<%= products %>" :</h2>
+				</br>
+				<script>
+					let name = [];
+					let id = 0;
+				</script>	
+				<span class="items">
+					
+						<% if (Products.length > 0) { %>
+						<% Products.forEach(Products => { %> 
+				
+					<span class="item" id="MySpan">    
+						<img src="<%= Products.image %>" class="image"/>    
+						</br>
+						<span class="name" id="name">
+							<%= Products.name %>
+						<script>							
+							name.push('<%= Products.name %>')
+							console.log(name)
+						</script>	
+						</span> 
+							</br>                   
+						<%= Products.type %>
+							</br>
+						Price: <%= Products.price %>
+							</br>
+						<a href="<%= Products.url%>" id="url" target="_blank">Link to buy:</a>  
+				
+						<div class="hide" >
+							<button id="addfromdatabase">
+								<img src="/pic/add3.png"/>
+								<script>
+									id = id + 1;
+									console.log(id) 
+								</script>	
+							</button>
+						</div>
+					</span>
+						<% }) %>
+						<% } else { %>
+							<h2> Items not found...</h2>
+						<% } %>                
+			    
+		</div>
+	</body>
+	<script>
+
+		document.getElementById('addfromdatabase').onclick = () => {
+			addfromdatabase();
+		};
+
+		function addfromdatabase() {
+			console.log('click');
+			//const name = document.getElementById('name').value;
+			console.log(name)
+		}
+	</script>
+	
+</html>

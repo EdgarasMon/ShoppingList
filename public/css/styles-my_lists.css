@@ -6,6 +6,28 @@ body {
 	font-style: italic;
 }
 
+/* Style for scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 .data {
 	background-image: url('/pic/paper2.jpg');
 	background-size: cover;

@@ -1,45 +1,76 @@
-import { data } from '/views/routes.js';
-console.log(data);
-
-var favorites = [];
-
-document.getElementById('add').onclick = function changeContent() {
+addProduct = () => {
 	document.getElementById('container2').style.display = 'block';
 	document.getElementById('grocery').style.display = 'none';
-	var product = document.getElementById('first').value;
+
+	var productName = document.getElementById('first').value;
 	var productQty = document.getElementById('Qty').value;
-	var weight = document.getElementById('weight').value;
-	var units = document.getElementById('units').value;
-	var price = document.getElementById('price').value;
-	var currency = document.getElementById('currency').value;
-	list.innerText += ' * ' + product;
+	var productWeight = document.getElementById('weight').value;
+	var productUnits = document.getElementById('units').value;
+	var productPrice = document.getElementById('price').value;
+	var productCurrency = document.getElementById('currency').value;
+
+	list.innerText += ' * ' + productName;
 	list.innerText += ' ' + productQty + 'x';
-	list.innerText += ' ' + weight;
-	if (weight != '') {
-		list.innerText += ' ' + units;
+	list.innerText += ' ' + productWeight;
+
+	if (productWeight != '') {
+		list.innerText += ' ' + productUnits;
 	}
-	list.innerText += ' ' + price;
-	if (price != '') {
-		list.innerText += ' ' + currency;
+	list.innerText += ' ' + productPrice;
+	if (productPrice != '') {
+		list.innerText += ' ' + productCurrency;
 	}
 	list.innerText += '\n';
 
-	var myObj = {
-		Product: product,
-		Qty: productQty,
-		weight: weight,
-		units: units,
-		price: price,
-		currency: currency,
-	};
-	console.log('myobj', myObj);
-	favorites.push(myObj);
-	console.log('fav inside', favorites);
+	var addedProduct = createProductAsObject(
+		productName,
+		productQty,
+		productWeight,
+		productUnits,
+		productPrice,
+		productCurrency
+	);
+
+	addProductToLocalStorage(addedProduct);
 };
 
-console.log(JSON.stringify(favorites));
+createProductAsObject = (
+	name,
+	qty = 1,
+	weight = null,
+	units = null,
+	price = null,
+	currency = '$'
+) => {
+	return (Product = {
+		name,
+		qty,
+		weight,
+		units,
+		price,
+		currency,
+	});
+};
 
-document.getElementById('save').onclick = function () {
+addProductToLocalStorage = product => {
+	var productsList = [];
+
+	productsList.push(product);
+
+	var currentAddedProducts = localStorage.getItem('favedProducts');
+	localStorage.setItem(
+		'favedProducts',
+		JSON.stringify(JSON.parse(currentAddedProducts).concat(productsList))
+	);
+};
+
+// (function () {
+// 	if (favorites != 'undefined') {
+// 		addProduct();
+// 	}
+// })();
+
+document.getElementById('save').onclick = () => {
 	save();
 };
 
@@ -50,7 +81,7 @@ function save() {
 	document.getElementById('id').innerHTML = JSON.stringify(favorites);
 }
 
-document.getElementById('clear').onclick = function () {
+document.getElementById('clear').onclick = () => {
 	clear();
 };
 function clear() {
@@ -62,14 +93,14 @@ function clear() {
 	document.getElementById('currency').value = '';
 }
 
-document.getElementById('clear2').onclick = function () {
+document.getElementById('clear2').onclick = () => {
 	clear2();
 };
 function clear2() {
 	list.innerText = '';
 }
 
-document.getElementById('addPaper').onclick = function () {
+document.getElementById('addPaper').onclick = () => {
 	addPaper();
 };
 function addPaper() {
@@ -80,15 +111,10 @@ function addPaper() {
 	document.getElementById('addPaper').remove();
 }
 
-document.getElementById('search').onclick = function () {
-	search();
+document.getElementById('addfromdatabase').onclick = () => {
+	addfromdatabase();
 };
 
-function search() {
-	console.log(result);
-	document.getElementById('container3').innerText = loadJson();
-	document.getElementById('container3');
-	fetch('http://localhost:3000/dashboard')
-		.then(response => response.json())
-		.then(data => console.log(data));
+function addfromdatabase() {
+	console.log('click');
 }
