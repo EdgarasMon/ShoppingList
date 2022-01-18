@@ -1,6 +1,12 @@
-addProduct = () => {
+var productsList = [];
+
+showMyListElement = () => {
 	document.getElementById('container2').style.display = 'block';
 	document.getElementById('grocery').style.display = 'none';
+};
+
+addProduct = () => {
+	showMyList();
 
 	var productName = document.getElementById('first').value;
 	var productQty = document.getElementById('Qty').value;
@@ -53,8 +59,6 @@ createProductAsObject = (
 };
 
 addProductToLocalStorage = product => {
-	var productsList = [];
-
 	productsList.push(product);
 
 	var currentAddedProducts = localStorage.getItem('favedProducts');
@@ -62,13 +66,20 @@ addProductToLocalStorage = product => {
 		'favedProducts',
 		JSON.stringify(JSON.parse(currentAddedProducts).concat(productsList))
 	);
+	// TODO - reset productsList array
 };
 
-// (function () {
-// 	if (favorites != 'undefined') {
-// 		addProduct();
-// 	}
-// })();
+getProductsFromLocalStorage = () => {
+	// TODO - get frrom local storage
+	console.log('getProductsFromLocalStorage productsList ', productsList);
+};
+
+(function () {
+	if (productsList != null) {
+		showMyListElement();
+		getProductsFromLocalStorage();
+	}
+})();
 
 document.getElementById('save').onclick = () => {
 	save();
@@ -103,6 +114,7 @@ function clear2() {
 document.getElementById('addPaper').onclick = () => {
 	addPaper();
 };
+
 function addPaper() {
 	var img = document.createElement('img');
 	img.src = '/pic/paper3-2.jpg';
@@ -111,10 +123,10 @@ function addPaper() {
 	document.getElementById('addPaper').remove();
 }
 
-document.getElementById('addfromdatabase').onclick = () => {
-	addfromdatabase();
-};
+// document.getElementById('addfromdatabase').onclick = () => {
+// 	addfromdatabase();
+// };
 
-function addfromdatabase() {
-	console.log('click');
-}
+// function addfromdatabase() {
+// 	console.log('click');
+// }
