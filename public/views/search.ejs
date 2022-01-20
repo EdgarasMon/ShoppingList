@@ -45,7 +45,7 @@
 
 					<span class="item" id="MySpan">    
 						<img src="<%= Products[i].image %>" class="image"/>    
-						</br>
+							</br>
 						<span class="name" id="name">
 							<%= Products[i].name %>							
 						</span> 
@@ -70,18 +70,12 @@
 	</body>
 	<script src="frontend.js"></script>	
 	<script>
+		saveProduct = selectedProductName => {
 
-		function saveProduct(selectedProductName) {
-			var selectedProduct = createProductAsObject(
-						selectedProductName
-			);
-
-			console.log('selectedProduct ', selectedProduct)
-
-			addProductToLocalStorage(selectedProduct);			
-		}
-		
+		var selectedProduct = createProductAsObject(selectedProductName);
+	
+		addProductToLocalStorage(selectedProduct);
+	};
 	</script>
 	
-	
-</html>
+	</html>

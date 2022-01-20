@@ -34,8 +34,7 @@
 						<span></span>
 						<span></span>
 						<ul id="menu">
-							<a href="/My_Lists"><li>My Lists</li></a>
-							<a href="/Products.html"><li>Products</li></a>
+							<a href="/My_Lists"><li>My Lists</li></a>							
 							<a href="/logout"><li>Log Out</li></a>
 						</ul>
 					</div>
@@ -59,13 +58,13 @@
 								/>
 							</button>
 							<textarea
-								id="first"
+								id="name"
 								name="first"
 								placeholder=". . ."
 								rows="3"
 								cols="30"
 							></textarea>
-							<select id="Qty" name="Qty" size="3" style="width: 50px">
+							<select id="qty" name="Qty" size="3" style="width: 50px">
 								<option value="1" selected="selected">
 									1X
 								</option>
@@ -112,7 +111,7 @@
 								<option value="$">&nbsp$&nbsp</option>
 								<option value="£">&nbsp£</option>
 							</select>
-							<button id="add" onclick="addProduct()" >
+							<button id="add" onclick="addProductEnteringDescription()" >
 								<input
 									type="image"
 									class="add-image"
@@ -180,9 +179,10 @@
 							name="data2"
 						></textarea>
 						<button id="save">Save</button>
+					</form>	
 						<button id="clear2">Clear</button>
 						<button id="addPaper">+</button>
-					</form>
+					
 				</div>
 			</div>
 			<img

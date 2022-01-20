@@ -29,12 +29,9 @@ function changeContent() {
 		price: price,
 		currency: currency,
 	};
-	console.log('myobj', myObj);
-	favorites.push(myObj);
-	console.log('fav inside', favorites);
-}
 
-console.log(JSON.stringify(favorites));
+	favorites.push(myObj);
+}
 
 document.getElementById('save').onclick = function () {
 	save();
@@ -43,7 +40,6 @@ document.getElementById('save').onclick = function () {
 function save() {
 	document.getElementById('save').innerHTML =
 		'For saving grocery List please sign up';
-	console.log('favorites in save', favorites);
 	const btn = document.querySelector('save');
 	//document.getElementById('data2').innerHTML = JSON.stringify(favorites);
 }

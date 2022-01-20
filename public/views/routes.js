@@ -9,7 +9,6 @@ const User = require('../../models/user');
 const Products = require('../../models/products');
 const passportConfig = require('../../passport-config');
 const { ObjectId } = require('mongodb');
-const cors = require('cors');
 
 //--Routes--
 
@@ -108,6 +107,7 @@ router
 	.route('/dashboard')
 	.get(checkAuthenticated, (req, res) => {
 		const User = req.user.User;
+
 		res.render('dashboard', { User: User });
 	})
 	.post((req, res) => {
@@ -137,7 +137,6 @@ router.get('/My_Lists', checkAuthenticated, (req, res) => {
 
 router.delete('/My_Lists/:id', (req, res) => {
 	const id = req.params.id;
-	console.log(id);
 
 	List.findByIdAndDelete(id)
 		.then(result => {
@@ -154,30 +153,12 @@ router.get('/search', (req, res) => {
 
 	Products.find({ name: { $regex: products } })
 		.then(result => {
-			//res.json({ redirect: 'search', Products: result });
-			//var data = JSON.result;
-			//console.log(data);
-
 			res.render('search', { Products: result, products: products });
-			//res.json(data);
 		})
 		.catch(err => {
 			console.log(err);
 		});
 });
-
-// router.get('/search/:id', (req, res) => {
-// 	const id = req.params.id;
-// 	console.log(id);
-
-// 	Products.find(id)
-// 		.then(result => {
-// 			res.json({ redirect: '/search' }, { id: id });
-// 		})
-// 		.catch(err => {
-// 			console.log(err);
-// 		});
-// });
 
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
