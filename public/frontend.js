@@ -44,7 +44,7 @@ addProductEnteringDescription = () => {
 	}
 	list.innerText += '\n';
 
-	let addedProduct = createProductAsObject(
+	var addedProduct = createProductAsObject(
 		name,
 		qty,
 		weight,
@@ -86,7 +86,7 @@ addProductToLocalStorage = product => {
 		getProductsFromLocalStorage();
 		showProductsListElement();
 	} else {
-		localStorage.setItem('savedProducts', null);
+		localStorage.setItem('savedProducts', '[]'); // how to set empty array?
 	}
 })();
 
@@ -97,8 +97,8 @@ document.getElementById('save').onclick = () => {
 function save() {
 	document.getElementById('save').innerHTML = 'Saved';
 	const btn = document.querySelector('save');
-	document.getElementById('data2').innerHTML = JSON.stringify(productsList);
-	console.log('saving');
+	products = JSON.parse(localStorage.getItem('savedProducts'));
+	document.getElementById('data2').innerHTML = JSON.stringify(products);
 }
 
 document.getElementById('clear').onclick = () => {
