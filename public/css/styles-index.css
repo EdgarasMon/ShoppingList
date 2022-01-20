@@ -198,8 +198,9 @@ img#paper {
 .bottomButons {
 	display: flex;
 	position: absolute;
-	bottom: 2%;
-	right: 15%;
+	align-items: flex-start;
+	right: 2%;
+	top: 3%;
 }
 
 span#save {

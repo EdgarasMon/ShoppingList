@@ -123,8 +123,6 @@
 					</fieldset>
 				</form>
 
-				<div id="trial"></div>
-
 				<form method="get" action="/search">
 					<fieldset id="fieldset2">
 						<legend>Or search from database</legend>
@@ -134,9 +132,7 @@
 									type="image"
 									class="delete-image"
 									type="button"
-									src="/pic/delete.png"
-									width="23"
-									height="23"
+									src="/pic/delete2.png"
 									id="clear"
 								/>
 							</button>
@@ -147,7 +143,7 @@
 								placeholder=". . ."
 								name="third"
 								maxlength="100"
-								size="65"
+								size="63"
 							/>
 							<label for="Qty2"></label>
 							<button id="search">
@@ -155,9 +151,7 @@
 									type="image"									
 									class="search"
 									src="/pic/search.png"
-									alt="Submit"
-									width="23"
-									height="23"
+									alt="Submit"									
 								/>
 							</button>
 						</div>					
@@ -168,7 +162,10 @@
 					</fieldset>
 				</form>
 
-			<div class="container2" id="container2" style="display: none">
+			<div class="info" id="info" style="background-color: rgb(255, 255, 120); color: black; text-align: center;">
+			
+			</div>
+			<div class="container2" id="container2" style="display: none, width: 100%" >
 				<img class="paper" id="paper" src="pic/paper3.jpg" />
 				<div id="list" class="top-left"></div>
 				<div class="bottomButons">
@@ -178,10 +175,16 @@
 							id="data2"
 							name="data2"
 						></textarea>
-						<button id="save">Save</button>
+						<button id="save">
+							<input type="image" src="/pic/save.png"></input>
+						</button>
 					</form>	
-						<button id="clear2">Clear</button>
-						<button id="addPaper">+</button>
+						<button id="clear2">
+							<input type="image" src="/pic/clear.png"></input>	
+						</button>
+						<button id="addPaper" onclick="addPaper()">
+							<input type="image" src="/pic/plus.png"></input>	
+						</button>
 					
 				</div>
 			</div>

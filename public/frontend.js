@@ -86,7 +86,7 @@ addProductToLocalStorage = product => {
 		getProductsFromLocalStorage();
 		showProductsListElement();
 	} else {
-		localStorage.setItem('savedProducts', '[]'); // how to set empty array?
+		localStorage.setItem('savedProducts', '[]');
 	}
 })();
 
@@ -95,7 +95,11 @@ document.getElementById('save').onclick = () => {
 };
 
 function save() {
-	document.getElementById('save').innerHTML = 'Saved';
+	document.getElementById('info').innerHTML = '';
+	document.getElementById('info').style.display = 'block';
+	document.getElementById('info').innerHTML += '* List was saved ';
+	document.getElementById('info').innerHTML +=
+		'<button id="close" style="float: right; font-weight: bold;" onclick="closeInfoDiv()">X</button>';
 	const btn = document.querySelector('save');
 	products = JSON.parse(localStorage.getItem('savedProducts'));
 	document.getElementById('data2').innerHTML = JSON.stringify(products);
@@ -117,18 +121,27 @@ document.getElementById('clear2').onclick = () => {
 	clear2();
 };
 function clear2() {
+	document.getElementById('info').innerHTML = '';
+	document.getElementById('info').style.display = 'block';
+	document.getElementById('info').innerHTML += '* List was cleared ';
+	document.getElementById('info').innerHTML +=
+		'<button id="close" style="float: right; font-weight: bold;" onclick="closeInfoDiv()">X</button>';
 	list.innerText = '';
 	localStorage.clear('savedProducts');
 }
-
-document.getElementById('addPaper').onclick = () => {
-	addPaper();
-};
-
 function addPaper() {
+	document.getElementById('info').innerHTML = '';
+	document.getElementById('info').style.display = 'block';
+	document.getElementById('info').innerHTML += '* Papper was added ';
+	document.getElementById('info').innerHTML +=
+		'<button id="close" style="float: right; font-weight: bold;" onclick="closeInfoDiv()">X</button>';
 	var img = document.createElement('img');
 	img.src = '/pic/paper3-2.jpg';
 	var block = document.getElementById('container2');
 	block.appendChild(img);
 	document.getElementById('addPaper').remove();
 }
+
+closeInfoDiv = () => {
+	document.getElementById('info').style.display = 'none';
+};

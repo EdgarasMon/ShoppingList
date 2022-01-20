@@ -29,7 +29,7 @@ body {
 }
 
 .data {
-	background-image: url('/pic/paper2.jpg');
+	background-image: url('/pic/paper5.jpg');
 	background-size: cover;
 	color: #000;
 	font-size: 1.5rem;
@@ -38,7 +38,7 @@ body {
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px; /* Need a specific value to work */
+	width: 650px;
 	display: grid;
 	justify-content: right;
 	padding: 20px;

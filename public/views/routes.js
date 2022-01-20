@@ -149,7 +149,6 @@ router.delete('/My_Lists/:id', (req, res) => {
 
 router.get('/search', (req, res) => {
 	const products = req.query.third;
-	console.log(products);
 
 	Products.find({ name: { $regex: products } })
 		.then(result => {
