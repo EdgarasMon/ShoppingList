@@ -30,5 +30,4 @@ My motivation?
   To get introduced to Node.js and MongoDB
   
 What did I learn?
-  The main Node.js concepts. Setupping basic backend and 
-  working with unrelational DBs. Authentication and authorization  
+  The main Node.js concepts. Setupping basic backend and working with unrelational DBs. Authentication and authorization.  
