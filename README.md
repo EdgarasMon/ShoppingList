@@ -31,3 +31,9 @@ My motivation?
   
 What did I learn?
   The main Node.js concepts. Setupping basic backend and working with unrelational DBs. Authentication and authorization.  
+
+![dashboard_result](https://user-images.githubusercontent.com/88674998/155677658-74ee06d8-8b77-4712-b594-f4ee52671719.jpg)
+![login_result](https://user-images.githubusercontent.com/88674998/155677660-7da26338-0f8e-4e82-8501-eab8b34d158d.jpg)
+![my-lists_result](https://user-images.githubusercontent.com/88674998/155677661-0c19c407-25d2-4652-807a-e2fcbd439e63.jpg)
+![searchresults_result](https://user-images.githubusercontent.com/88674998/155677662-e705d453-f2db-4d6a-9a45-aec41effbc2c.jpg)
+![signup_result](https://user-images.githubusercontent.com/88674998/155677663-9a797014-72ac-43d5-a624-a9b1574ed8ec.jpg)
